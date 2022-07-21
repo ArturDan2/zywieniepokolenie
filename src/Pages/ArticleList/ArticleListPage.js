@@ -1,182 +1,94 @@
-import {React, useEffect} from "react";
+import {React, useEffect,useState} from "react";
+//styles
 import styled from "styled-components";
-import ScrollToTop from "../../utils";
-import grandma from "../Home/img/grandma.jpg";
-import changes from "../Home/img/changes.jpg";
-import plate from "../Home/img/plate.jpg";
-import kidandbroc from "../Home/img/kidandbroc.jpg";
-import kid from "../Home/img/kid.jpg";
-import {Link} from "react-router-dom";
+//components
+import ArticleElement from "./Components/ArticleElement";
+import ArticleNewestElement from "./Components/ArticleNewestElement";
+import Pagination from "./Components/Pagination";
+//router
+import {useLocation} from "react-router-dom";
+//logic
+import { scrollToTop } from "../../GlobalFuncionality/GlobalFunctions";
 
 
 
-const ArticleListPage = () => {
+const ArticleListPage = ({posts}) => {
+    const {pathname} = useLocation();
+    const [currentPage, setCurrentPage] = useState();
+    const [postsPerPage, setPostsPerPage] = useState(7);
+
+    const indexOfLastPost = currentPage * postsPerPage;
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;
+    const currentPosts = posts.slice(indexOfFirstPost,indexOfLastPost);
+    const [, ...withoutFirst] = currentPosts;
+
+    useEffect(()=> {
+        scrollToTop()
+    },[pathname])
+
+
+
     return (
         <MainContainer>
-            <ScrollToTop/>
             <h1>Artykuły</h1>
-            <Link to={"/article/1"}>
-                <ArticleNewestElement>
-                    <FirstImageContainer>
-                        <img src={grandma}/>
-                    </FirstImageContainer>
-                    <FirstTextContainer>
-                        <h4>08 grudzień, 2021</h4>
-                        <h2>Schabowy babci Krysi w zdrowszym wydaniu</h2>
-                        <h3>Niedzielny obiad, rodzina zbiera się przy wspólnym stole, a na talerzach kotlet schabowy. Czy trzeba zupełnie z niego rezygnować? Niekoniecznie!</h3>
-                    </FirstTextContainer>
-                </ArticleNewestElement>
-            </Link>
-
-            <OtherArticles>
-                <StyledLink to={"/article/2"}>
-                    <ArticleElement>
-                        <OtherImageContainer>
-                            <img src={changes}/>
-                        </OtherImageContainer>
-                        <OtherTextContainer>
-                            <h4>7 grudzień, 2021</h4>
-                            <h2>Zmiana nawyków żywieniowych u dzieci? Zacznij od siebie!</h2>
-                            <h3>Jak pozbyć się niezdrowych nawyków żywieniowych?</h3>
-                        </OtherTextContainer>
-                    </ArticleElement>
-                </StyledLink>
-                
-                <StyledLink to={"/article/3"}>
-                    <ArticleElement>
-                        <OtherImageContainer>
-                            <img src={plate}/>
-                        </OtherImageContainer>
-                        <OtherTextContainer>
-                            <h4>6 grudzień, 2021r</h4>
-                            <h2>Talerz zdrowego żywienia</h2>
-                            <h3>Wprowadź dobre nawyki żywieniowe z Talerzem zdrowego żywienia. Zacznij od siebie i daj żywieniowy przykład swoim pociechom.</h3>
-                        </OtherTextContainer>
-                    </ArticleElement>
-                </StyledLink>
-                
-                <StyledLink to={"/article/4"}>
-                    <ArticleElement>
-                        <OtherImageContainer>
-                            <img src={kidandbroc}/>
-                        </OtherImageContainer>
-                        <OtherTextContainer>
-                            <h4>5 grudzień, 2021</h4>
-                            <h2>Jak wyglądają nawyki żywieniowe naszych dzieci?</h2>
-                            <h3>Przekonaj się jaki obraz na nawyki naszych dzieci rzucają europejskie badania naukowe.</h3>
-                        </OtherTextContainer>
-                    </ArticleElement>
-                </StyledLink>
-                
-                <StyledLink to={"/article/5"}>
-                    <ArticleElement>
-                        <OtherImageContainer>
-                            <img src={kid}/>
-                        </OtherImageContainer>
-                        <OtherTextContainer>
-                            <h4>4 grudzień, 2021</h4>
-                            <h2>Wpływ rodziców na zachowania żywieniowe dzieci</h2>
-                            <h3>Jak duży wpływ masz na budowanie nawyków swojego dziecka?</h3>
-                        </OtherTextContainer>
-                    </ArticleElement>
-                </StyledLink>
-            </OtherArticles>
+            <GridContainer>
+                <ArticleNewestElement postData={currentPosts[0]}/>
+                {withoutFirst.map((thumb) => {
+                return <ArticleElement key={thumb.id} postData={thumb}/>
+            })}
+            </GridContainer>
+            <Pagination postsPerPage={postsPerPage} totalPosts={posts.length} setCurrentPage={setCurrentPage}/>
         </MainContainer>
     )
-  }
+}
 
   //styled
   const MainContainer = styled.div`
-    margin: 5rem 12rem;
+    display: flex;
+    flex-direction: column;
+    margin: 5rem 10rem;
     h1{
-        font-size: 70px;
-        margin-bottom: 3rem;
+        font-size: 5rem;
+        margin-bottom: 2rem;
     }
     a{
         color: black;
     }
-  `;
-  //newest
-  const ArticleNewestElement = styled.div`
-    height: 43vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-  `;
-
-  const FirstImageContainer = styled.div`
-    min-height: 100%;
-    min-width: 35rem;
-    img{
-        max-height: 100%;
-        max-width: 100%;
-        object-fit: cover;
-        overflow: hidden;
+    @media (max-width: 1350px) {
+        margin: 2rem 3rem 0;
+        padding: 4rem 0rem 0;
+    }
+    @media (max-width: 940px) {
+            padding-top: 6.5rem;
+        }
+    @media (max-width: 800px) {
+        margin: 2rem 1.5rem;
+        h1{
+            margin-bottom: 0rem;
+            font-size: 3rem;
+        }
     }
   `;
 
-  const FirstTextContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1rem;
-    min-width: 30rem;
-    height: 100%;
-    text-align: justify;
-    h2{
-        font-size: 48px;
-        padding: 1rem 0rem;
+const GridContainer = styled.div`
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3,31.3%);
+    column-gap: 3%;
+    row-gap: 4rem;
+    margin-bottom: 2.5rem;
+    div{
+        min-height: 0;
     }
-    h4{
-        color: #6b6b6b;
-        font-weight: 200;
+    @media (max-width: 1240px) {
+        grid-template-columns: repeat(2,48.5%);
     }
-    h3{
-        font-weight: 400;
+    @media (max-width: 600px) {
+        grid-template-columns: repeat(1,100%);
+        div{
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
     }
-  `;
-  // other
-  const OtherArticles = styled.div`
-        margin-top: 3rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        width: 100%;
-        `;
-
-const ArticleElement = styled.div`
-margin-top: 2rem;
-height: 25rem;
-`;
-
-const OtherImageContainer = styled.div`
-height: 12rem;
-background: pink;
-img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    overflow: hidden;
-}
-`;
-
-const OtherTextContainer = styled.div`
-height: 13rem;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-h4{
-    font-weight: 100;
-    color: #6b6b6b;
-}
-h3{
-    font-weight: 400;
-    font-size: 18px;
-}`;
-
-const StyledLink = styled(Link)`
-    width: 21rem;
-    `
+    `;
   export default ArticleListPage;

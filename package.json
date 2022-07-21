@@ -4,22 +4,31 @@
   "private": true,
   "dependencies": {
     "@styled-icons/bootstrap": "^10.34.0",
+    "@styled-icons/entypo": "^10.34.0",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "caniuse-lite": "^1.0.30001367",
+    "firebase": "^9.6.1",
+    "firebase-admin": "^10.0.2",
+    "framer-motion": "^4.1.17",
     "history": "^5.1.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-intersection-observer": "^8.33.1",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
+    "react-scroll": "^1.8.4",
     "styled-components": "^5.3.3",
+    "uuidv4": "^6.2.12",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && firebase deploy"
   },
   "eslintConfig": {
     "extends": [

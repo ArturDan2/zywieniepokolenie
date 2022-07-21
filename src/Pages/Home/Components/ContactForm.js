@@ -1,19 +1,24 @@
 import React from "react";
+//styles
 import styled from 'styled-components';
 
 
-const ContactForm = () =>{
+
+const ContactForm = ({},ref) =>{
+  
     return (
-     <MainContainer>
+     <MainContainer ref={ref}>
          <FormContainer>
-            <h3>Masz <span>pytanie?</span><br/>Skontaktuj się z nami!</h3>
+            <h3>Masz <span className="1">pytanie</span>
+            <span className="2">?</span><br/>
+            Skontaktuj się z nami!</h3>
             <Inputs>
               <Input>
                 <label>Imię:</label>
                 <input type="text" name="fname"></input>
               </Input>
               <Input>
-                <label for="theme">Temat wiadomości:</label>
+                <label>Temat wiadomości:</label>
                 <input type="text" id="theme" name="theme"></input>
               </Input>
             </Inputs>
@@ -24,11 +29,14 @@ const ContactForm = () =>{
     )
   }
   
+  const forwardedContactForm = React.forwardRef(ContactForm)
+
   const MainContainer = styled.div`
     min-height: 75vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 2rem 0rem;
     h3{
         font-size: 32px;
     }
@@ -39,13 +47,14 @@ const ContactForm = () =>{
     flex-direction: column;
     justify-content: space-around;
     background: white;
-    width: 40vw;
+    width: 40%;
     min-height: 70vh;
     margin-bottom: 7rem;
     box-shadow: 0px 5px 5px #00000018;
     padding: 2rem 8rem;
     span{
       color: #EF0061;
+      display: inline-block;
     }
     textarea{
       resize: none;
@@ -56,10 +65,16 @@ const ContactForm = () =>{
       margin-top: 2rem;
       padding: 0.5rem;
     }
-    @media (max-width: 1250px) {
+    @media (max-width: 1240px) {
+      width: 70%;
       padding: 2rem 6rem;
     }
-  `;
+    @media (max-width: 600px) {
+      align-items: center;
+      width: 90%;
+      padding: 2rem 2rem;
+    }
+  `
   const Input = styled.div`
     display: flex;
     flex-direction: column;
@@ -72,11 +87,15 @@ const ContactForm = () =>{
       outline: none;
       @media (max-width: 1460px) {
         width: 8rem;
-    };
-    @media (max-width: 1380px) {
-    margin-bottom: 0.7rem;
+      };
+      @media (max-width: 1380px) {
+        margin-bottom: 0.7rem;
+      };
     }
-    }
+    @media (max-width: 600px) {
+        align-items: center;
+        justify-content: center;
+      }
   `;
   
   const Inputs = styled.div`
@@ -96,11 +115,20 @@ const ContactForm = () =>{
     color: white;
     border: none;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
     :hover{
       background: #EF0061;
+      transform: scale(1.05)
     }
+    :active{
+        transform: scale(0.95);
+    }
+    @media (max-width: 600px) {
+        font-size: 1rem;
+        width: 8rem;
+        height: 2rem;
+      }
 
   `
 
-  export default ContactForm;
+  export default forwardedContactForm;
