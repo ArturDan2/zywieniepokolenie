@@ -9,7 +9,11 @@ The idea of this project was born while one of the classes i attended as a Diete
 The purpose of this project is to introduce a healthy lifestyle campaign aimed for parents of young children. It also has an informative/edducational function. The website has been made on shape of a blog. Admin can create and share articles by using an admin panel. 
 
 ### `Functionality`
-The main feature of this web application is the posibility to create an article by the admin in an admin panel. To reach an admin panel user has to add "/admin" to the main route. It is not secured by any login panel as it normally should be.
+The main feature of this web application is the posibility to create an article by the admin in an admin panel. To reach an admin panel user has to add `"/admin"` to the main route. It is not secured by any login panel as it normally should be.
+
+#### Example:
+`http://localhost:3000/admin`
+
 Every posts data, including pictures is stored in a firestore cloud where it's fetched from.
 There are some missing features that could be included in this project in the future, like more advanced admin panel, login wall, statistics for articles, ability to edit or delete articles without the use of firestore, working tags system.
 
