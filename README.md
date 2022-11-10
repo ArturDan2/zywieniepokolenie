@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# żywieniepokolenie.pl
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `Introduction`
 
-## Available Scripts
+The idea of this project was born while one of the classes i attended as a Dietetics student. The task given to the students was to make a facebook/instagram profile as a part of bigger nutritional education project we have been doing throughout whole semester. I decided to create a simple website for my project. After i finished a simple landing page and already passed the task, I decided to give it some more time and expand the project with some new, more advanced features as a form of learning programming.
 
-In the project directory, you can run:
+### `General info`
 
-### `npm start`
+The purpose of this project is to introduce a healthy lifestyle campaign aimed for parents of young children. It also has an informative/edducational function. The website has been made on shape of a blog. Admin can create and share articles by using an admin panel. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `Functionality`
+The main feature of this web application is the posibility to create an article by the admin in an admin panel. To reach an admin panel user has to add `"/admin"` to the main route. It is not secured by any login panel as it normally should be.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+#### Example:
+`http://localhost:3000/admin`
 
-### `npm test`
+Every posts data, including pictures is stored in a firestore cloud where it's fetched from.
+There are some missing features that could be included in this project in the future, like more advanced admin panel, login wall, statistics for articles, ability to edit or delete articles without the use of firestore, working tags system.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### `Reflection`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+In the process of making this project i learnd how to work a Back-End as a Service services. I learned how to store the data and fetch it without a need of storing them inside the project files. One of the most difficult things to menage was to create my own post inside of an Admin Panel and interact with back-end side to push it there. I also delved deeper into the capabilities of React Library. This has been so far the most complex project of mine and that made me aware of how important a well planned file structure is.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `Used technologies`
 
-### `npm run eject`
+├── react@17.0.2
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+├── styled-components@5.3.3
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+├── firebase@9.6.1 - firestore database & storage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+├── react-intersection-observer@8.33.1
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+├── react-router-dom@6.0.2
 
-## Learn More
+### `Installation and Setup Instructions`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Installation:
 
-### Code Splitting
+`npm install`  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To Run Test Suite:  
 
-### Analyzing the Bundle Size
+`npm test`  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To Start Server:
 
-### Making a Progressive Web App
+`npm start`  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+To Visit App:
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+`localhost:3000`  
