@@ -11,7 +11,7 @@ const BannerComponent = () => {
                 <div className="heading-container">
                     <h2>Żywienie z <span className="order-1">pokolenia</span> na <span className="order-2">pokolenie</span><span className="order-3">.</span></h2>
                 </div>
-                <img src={family}></img>
+                <img alt="zdjęcie rodziny" src={family}></img>
         </MainContainer>
     )
 }

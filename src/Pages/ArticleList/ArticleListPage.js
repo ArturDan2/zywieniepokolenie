@@ -15,8 +15,7 @@ import { scrollToTop } from "../../GlobalFuncionality/GlobalFunctions";
 const ArticleListPage = ({posts}) => {
     const {pathname} = useLocation();
     const [currentPage, setCurrentPage] = useState();
-    const [postsPerPage, setPostsPerPage] = useState(7);
-
+    const postsPerPage = 7;
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = posts.slice(indexOfFirstPost,indexOfLastPost);

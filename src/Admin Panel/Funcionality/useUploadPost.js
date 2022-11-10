@@ -59,7 +59,7 @@ const useUploadPost = () => {
                 const postPictureKeys = Object.keys(newPost.postPictures);
                 let postPicturesFiles = [];
                 let allAlts = [];
-                postPictureKeys.map((key) => {
+                postPictureKeys.forEach((key) => {
                     if(newPost.postPictures[key].file !== null){
                         postPicturesFiles.push(newPost.postPictures[key].file.name);
                         allAlts.push(newPost.postPictures[key].alt);

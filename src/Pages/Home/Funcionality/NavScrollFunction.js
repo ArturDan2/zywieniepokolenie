@@ -9,7 +9,7 @@
         }
 
         switch (mobileNav){
-            case true: {
+            case true: 
                 switch(pathname){
                     case "/about":
                         window.scroll({ top: (aboutRef.current.offsetTop - 50), left: 0, behavior: 'smooth' });
@@ -25,10 +25,11 @@
                         break;
                     case "":
                         window.scrollTo(0, 0);
-                }
+                        break;
+                    default: return;
             }
             break;
-            case false: {
+            case false: 
                 switch(pathname){
                     case "/about":
                         window.scroll({ top: (aboutRef.current.offsetTop), left: 0, behavior: 'smooth' })
@@ -44,8 +45,11 @@
                         break;
                     case "":
                         window.scrollTo(0, 0);
-                }
+                        break;
+                    default: return;
             }
+            break;
+            default: return;
         }
     }
 

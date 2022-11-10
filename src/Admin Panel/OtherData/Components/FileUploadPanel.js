@@ -4,7 +4,6 @@ import styled from 'styled-components';
 const FileUploadPanel = ({id, newPost, setNewPost, name, setErr}) => {
 
   const [altRequired, setAltRequired] = useState(false);
-  const [prevIsEmpty , setPrevIsEmpty] = useState();
   
   function onFileChange (e) {
     setErr(null)
@@ -44,6 +43,7 @@ const FileUploadPanel = ({id, newPost, setNewPost, name, setErr}) => {
       })
       );
       break;
+      default: return;
       }
     }
 
@@ -61,13 +61,11 @@ const FileUploadPanel = ({id, newPost, setNewPost, name, setErr}) => {
               e.target.value = null;
               e.target.style.color = "red";
               setErr("*Pola powinny zostać uzupełnione w odpowiedniej kolejności");
-              setPrevIsEmpty(true);
               return true
-          }else if(e.target.id === "img3" && getPreviousInputs(1).value === '' || getPreviousInputs(0).value === ''){
+          }else if((e.target.id === "img3" && getPreviousInputs(1).value === '') || getPreviousInputs(0).value === ''){
               e.target.value = null;
               e.target.style.color = "red";
               setErr("*Pola powinny zostać uzupełnione w odpowiedniej kolejności");
-              setPrevIsEmpty(true);
               return true
           }else{
               return false
@@ -124,6 +122,7 @@ const FileUploadPanel = ({id, newPost, setNewPost, name, setErr}) => {
     })
     );
     break;
+    default: return;
     }
   }
 

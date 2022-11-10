@@ -19,10 +19,10 @@ const Article = ({posts}) => {
 
   const extractPost = () => {
     let post = {};
-    posts.map((postData) => {
+    posts.forEach((postData) => {
       if(postData.id === postId){
         post = postData;
-      }
+      };
     })
     return post;
   };

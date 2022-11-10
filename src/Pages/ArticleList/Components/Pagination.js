@@ -22,7 +22,7 @@ const Pagination = ({postsPerPage, totalPosts, setCurrentPage}) => {
 
     function currentHandler(number){
         let isCurrent = false;
-        if(number == page){
+        if(number === page){
             isCurrent = true
         }
         return isCurrent
